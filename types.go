@@ -31,14 +31,15 @@ type DNSRecordResult struct {
 	ZoneName   string    `json:"zone_name"`
 }
 
-func (drr *DNSRecordResult) Strings() []string {
-	result := make([]string, 5)
+func (drr *DNSRecordResult) Summary() map[string][]string {
+	result := make(map[string][]string)
 
-	result[0] = fmt.Sprintf("%s=%s", "id", drr.Id)
-	result[1] = fmt.Sprintf("%s=%s", "type", drr.Type)
-	result[2] = fmt.Sprintf("%s=%s", "name", drr.Name)
-	result[3] = fmt.Sprintf("%s=%s", "content", drr.Content)
-	result[4] = fmt.Sprintf("%s=%t", "proxied", drr.Proxied)
+	result[drr.Id] = []string{
+		fmt.Sprintf("%s=%s", "type", drr.Type),
+		fmt.Sprintf("%s=%s", "name", drr.Name),
+		fmt.Sprintf("%s=%s", "content", drr.Content),
+		fmt.Sprintf("%s=%t", "proxied", drr.Proxied),
+	}
 
 	return result
 }
