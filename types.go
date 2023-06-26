@@ -1,6 +1,9 @@
 package cf_api
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type CodeMessage struct {
 	Code    int    `json:"code"`
@@ -26,6 +29,18 @@ type DNSRecordResult struct {
 	TTL        int       `json:"ttl"`
 	ZoneId     string    `json:"zone_id"`
 	ZoneName   string    `json:"zone_name"`
+}
+
+func (drr *DNSRecordResult) Strings() []string {
+	result := make([]string, 5)
+
+	result[0] = fmt.Sprintf("%s=%s", "id", drr.Id)
+	result[1] = fmt.Sprintf("%s=%s", "type", drr.Type)
+	result[2] = fmt.Sprintf("%s=%s", "name", drr.Name)
+	result[3] = fmt.Sprintf("%s=%s", "content", drr.Content)
+	result[4] = fmt.Sprintf("%s=%t", "proxied", drr.Proxied)
+
+	return result
 }
 
 type ResultInfo struct {
