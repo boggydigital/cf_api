@@ -1,4 +1,4 @@
-package trace
+package cf_trace
 
 import (
 	"bufio"
@@ -9,7 +9,7 @@ import (
 
 func GetMap(hc *http.Client) (map[string]string, error) {
 
-	resp, err := hc.Get(Url().String())
+	resp, err := hc.Get(TraceUrl().String())
 	if err != nil {
 		return nil, err
 	}

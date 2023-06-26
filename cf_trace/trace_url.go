@@ -1,11 +1,11 @@
-package trace
+package cf_trace
 
 import (
 	"github.com/boggydigital/cf_api/urls"
 	"net/url"
 )
 
-func Url() *url.URL {
+func TraceUrl() *url.URL {
 	return &url.URL{
 		Scheme: urls.HTTPS,
 		Host:   urls.WwwCloudflareHost,
